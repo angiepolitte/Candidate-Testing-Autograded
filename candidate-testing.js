@@ -18,7 +18,7 @@ let comparedAnswers = "";
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
   candidateName = input.question("Enter your name: ");
-  console.log(candidateName);
+  
  
 }
 
@@ -39,17 +39,36 @@ for (let i = 0; i < questions.length; i++) {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
+  let grade = [];  //TODO 3.2 use this variable to calculate the candidates score.
+  let sum = 0;
   for (let i = 0; i < questions.length; i++) {
    
     console.log(`Your Answer: ${candidateAnswers[i]}`);
     console.log(`Correct Answer: ${correctAnswers[i]}`);
+    
+    if (candidateAnswers[i].toLowerCase() == correctAnswers[i].toLowerCase()) {
+      grade.push(1/ questions.length * 100);
+      console.log("Correct!" + "\n");
+    } else {
+      console.log("That's incorrect" + "\n");
+    }
   } 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
-
-  return grade;
+  for (i = 0; i < grade.length; i++) {
+    sum += grade[i];
+  }
+  
+  
+  
+  if (sum >= 80) {
+    console.log(sum);
+    console.log("You Passed!");
+  } else { 
+    console.log(sum);
+    console.log("You Failed.");
+  }
+ 
+  return sum;
 }
 
 function runProgram() {
